@@ -22,8 +22,3 @@ class BranchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Branches
         fields = '__all__'
-
-    # def to_representation(self, instance):
-    #     repr= super(BranchSerializer, self).to_representation(instance)
-    #     repr['banks'] = instance.banks.name
-    #     return repr

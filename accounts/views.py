@@ -9,8 +9,8 @@ User = get_user_model()
 
 class RegisterViewAPI(ListCreateAPIView):
     """
-    API to signup user
+    API for signup
     """
     serializer_class = RegisterSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny, ]
     queryset = User.objects.all()

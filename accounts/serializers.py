@@ -9,7 +9,6 @@ class RegisterSerializer(serializers.ModelSerializer):
     """
     Serializer for user registration
     """
-    # confirm_password =
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
