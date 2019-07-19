@@ -23,7 +23,7 @@ class BankDetailAPIView(ListAPIView):
         :return:
         """
         conditions = Q()
-        ifsc_list = self.request.GET.get('ifsc').split(',')
+        ifsc_list = self.request.GET.get('ifsc', '').split(',')
         for ifsc in ifsc_list:
             conditions |= Q(ifsc__icontains=ifsc)
         qs = self.queryset.filter(conditions)
@@ -45,7 +45,7 @@ class BranchListAPIView(ListAPIView):
         city_list = self.request.GET.get('city', '').split(',')
         condition1 = Q()
         condition2 = Q()
-        qs = self.queryset
+        qs = self.queryset.filter()
         if bank_list or city_list:
             for bank in bank_list:
                 condition1 |= Q(bank__name__icontains=bank)
@@ -54,3 +54,6 @@ class BranchListAPIView(ListAPIView):
                 condition2 |= Q(city__icontains=city)
             qs = qs.filter(condition2)
         return qs
+
+
+
